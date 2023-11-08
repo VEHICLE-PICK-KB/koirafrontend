@@ -1,0 +1,48 @@
+/* Tuotelista.css */
+.box-container {
+  width: 100%;
+  max-width: 360px;
+  background-color: #f7f7f7;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.list-item-text {
+  margin-left: 10px;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.error-message {
+  color: #b00020;
+  text-align: center;
+}
