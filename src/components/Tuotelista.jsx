@@ -22,6 +22,31 @@ const Tuotelista = () => {
       sortable: true,
       filter: "agTextColumnFilter",
     },
+    {
+      field: "koko",
+      headerName: "Koko",
+      sortable: true,
+      filter: "agTextColumnFilter",
+    },
+    {
+      field: "hinta",
+      headerName: "Hinta",
+      sortable: true,
+      filter: "agNumberColumnFilter",
+      valueFormatter: (params) => {
+        const formatter = new Intl.NumberFormat("fi-FI", {
+          style: "currency",
+          currency: "EUR",
+        });
+        return formatter.format(params.value);
+      },
+    },
+    {
+      field: "valmistaja.nimi",
+      headerName: "Valmistaja",
+      sortable: true,
+      filter: "agTextColumnFilter",
+    },
   ]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -66,8 +91,6 @@ const Tuotelista = () => {
 
   return (
     <div className="ag-theme-alpine grid-container">
-      {" "}
-      {/* Use AG-Grid theme class here */}
       <Typography className="title" variant="h4" component="h1" gutterBottom>
         Tuotteet
       </Typography>
@@ -80,8 +103,8 @@ const Tuotelista = () => {
           filter: true,
           resizable: true,
         }}
-        Ref={{ gridRef }}
-        className="grid-full-width" // Make sure the grid takes the full width
+        Ref={gridRef}
+        className="grid-full-width"
       />
     </div>
   );
