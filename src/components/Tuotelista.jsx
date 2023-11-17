@@ -9,12 +9,19 @@ import "./Tuotelista.css";
 
 const Tuotelista = () => {
   const [tuotteet, setTuotteet] = useState([]);
+
+  const capitalizeFirstLetter = (value) => {
+    if (!value) return value;
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  };
+
   const [columnDefs] = useState([
     {
       field: "tyyppi",
       headerName: "Tyyppi",
       sortable: true,
       filter: "agTextColumnFilter",
+      valueFormatter: (params) => capitalizeFirstLetter(params.value),
     },
     {
       field: "vari",
