@@ -17,6 +17,12 @@ const Tuotelista = () => {
 
   const [columnDefs] = useState([
     {
+      field: "tuoteNimi",
+      headerName: "Tuote Nimi",
+      sortable: true,
+      filter: "agTextColumnFilter",
+    },
+    {
       field: "tyyppi",
       headerName: "Tyyppi",
       sortable: true,
