@@ -4,11 +4,15 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-
 import "./Tuotelista.css";
+import Rekisterointi from "./Rekisterointi";
 
 const Tuotelista = () => {
   const [tuotteet, setTuotteet] = useState([]);
+  
+  useEffect(() => {
+    fetchTuotteet();
+  }, []);
 
   const capitalizeFirstLetter = (value) => {
     if (!value) return value;
@@ -18,7 +22,7 @@ const Tuotelista = () => {
   const [columnDefs] = useState([
     {
       field: "tuoteNimi",
-      headerName: "Tuote Nimi",
+      headerName: "Tuotenimi",
       sortable: true,
       filter: "agTextColumnFilter",
     },
@@ -65,7 +69,7 @@ const Tuotelista = () => {
   const [error, setError] = useState(null);
   const gridRef = useRef();
 
-  useEffect(() => {
+  
     const fetchTuotteet = () => {
       fetch("http://localhost:8080/api/tuotteet")
         .then((response) => {
@@ -81,32 +85,32 @@ const Tuotelista = () => {
           setError(err);
           setLoading(false);
         });
-    };
+        if (loading) {
+          return (
+            <div className="loading-container">
+              <CircularProgress />
+            </div>
+          );
+        }
+      
+        if (error) {
+          return (
+            <Typography className="error-message" color="error">
+              {`Error: ${error.message}`}
+            </Typography>
+          );
+        }
+      };
 
-    fetchTuotteet();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <CircularProgress />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <Typography className="error-message" color="error">
-        {`Error: ${error.message}`}
-      </Typography>
-    );
-  }
 
   return (
+    <>
+    
     <div className="ag-theme-alpine grid-container">
       <Typography className="title" variant="h4" component="h1" gutterBottom>
         Tuotteet
       </Typography>
+      <Rekisterointi fetchTuotteet={fetchTuotteet} />
       <AgGridReact
         rowData={tuotteet}
         columnDefs={columnDefs}
@@ -120,6 +124,7 @@ const Tuotelista = () => {
         className="grid-full-width"
       />
     </div>
+    </>
   );
 };
 
