@@ -39,7 +39,7 @@ const [open, setOpen] = useState(false);
       }
 
 
-      fetch("http://localhost:8080/api/kayttajat", {
+      fetch("http://softala.haaga-helia.fi:8075/api/kayttajat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

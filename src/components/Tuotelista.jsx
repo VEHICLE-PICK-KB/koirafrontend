@@ -71,7 +71,7 @@ const Tuotelista = () => {
 
   
     const fetchTuotteet = () => {
-      fetch("http://localhost:8080/api/tuotteet")
+      fetch("http://softala.haaga-helia.fi:8075/api/tuotteet")
         .then((response) => {
           if (!response.ok)
             throw new Error("Something went wrong: " + response.statusText);
