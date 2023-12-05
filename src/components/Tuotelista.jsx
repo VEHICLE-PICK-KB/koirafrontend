@@ -9,7 +9,7 @@ import Rekisterointi from "./Rekisterointi";
 
 const Tuotelista = () => {
   const [tuotteet, setTuotteet] = useState([]);
-  
+
   useEffect(() => {
     fetchTuotteet();
   }, []);
@@ -69,61 +69,58 @@ const Tuotelista = () => {
   const [error, setError] = useState(null);
   const gridRef = useRef();
 
-  
-    const fetchTuotteet = () => {
-      fetch("http://softala.haaga-helia.fi:8075/api/tuotteet")
-        .then((response) => {
-          if (!response.ok)
-            throw new Error("Something went wrong: " + response.statusText);
-          return response.json();
-        })
-        .then((data) => {
-          setTuotteet(data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          setError(err);
-          setLoading(false);
-        });
-        if (loading) {
-          return (
-            <div className="loading-container">
-              <CircularProgress />
-            </div>
-          );
-        }
-      
-        if (error) {
-          return (
-            <Typography className="error-message" color="error">
-              {`Error: ${error.message}`}
-            </Typography>
-          );
-        }
-      };
+  const fetchTuotteet = () => {
+    fetch("https://softala.haaga-helia.fi:8075/api/kayttajat")
+      .then((response) => {
+        if (!response.ok)
+          throw new Error("Something went wrong: " + response.statusText);
+        return response.json();
+      })
+      .then((data) => {
+        setTuotteet(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
+    if (loading) {
+      return (
+        <div className="loading-container">
+          <CircularProgress />
+        </div>
+      );
+    }
 
+    if (error) {
+      return (
+        <Typography className="error-message" color="error">
+          {`Error: ${error.message}`}
+        </Typography>
+      );
+    }
+  };
 
   return (
     <>
-    
-    <div className="ag-theme-alpine grid-container">
-      <Typography className="title" variant="h4" component="h1" gutterBottom>
-        Tuotteet
-      </Typography>
-      <Rekisterointi fetchTuotteet={fetchTuotteet} />
-      <AgGridReact
-        rowData={tuotteet}
-        columnDefs={columnDefs}
-        defaultColDef={{
-          flex: 1,
-          minWidth: 100,
-          filter: true,
-          resizable: true,
-        }}
-        Ref={gridRef}
-        className="grid-full-width"
-      />
-    </div>
+      <div className="ag-theme-alpine grid-container">
+        <Typography className="title" variant="h4" component="h1" gutterBottom>
+          Tuotteet
+        </Typography>
+        <Rekisterointi fetchTuotteet={fetchTuotteet} />
+        <AgGridReact
+          rowData={tuotteet}
+          columnDefs={columnDefs}
+          defaultColDef={{
+            flex: 1,
+            minWidth: 100,
+            filter: true,
+            resizable: true,
+          }}
+          Ref={gridRef}
+          className="grid-full-width"
+        />
+      </div>
     </>
   );
 };
