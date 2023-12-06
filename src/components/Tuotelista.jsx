@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-import { AgGridReact } from "ag-grid-react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import "./Tuotelista.css";
+import { AgGridReact } from "ag-grid-react";
+import { useEffect, useRef, useState } from "react";
 import Rekisterointi from "./Rekisterointi";
+import "./Tuotelista.css";
 
 const Tuotelista = () => {
   const [tuotteet, setTuotteet] = useState([]);
@@ -70,7 +70,7 @@ const Tuotelista = () => {
   const gridRef = useRef();
 
   const fetchTuotteet = () => {
-    fetch("https://softala.haaga-helia.fi:8075/api/kayttajat")
+    fetch("https://softala.haaga-helia.fi:8075/api/tuotteet")
       .then((response) => {
         if (!response.ok)
           throw new Error("Something went wrong: " + response.statusText);
