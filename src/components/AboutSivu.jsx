@@ -52,10 +52,8 @@ const AboutSivu = () => {
                 </AccordionSummary>
                 <AccordionDetails sx={accordionDetailsStyles}>
                     <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quisque ac neque dignissim, porta nibh facilisis, venenatis mauris.
-                        Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        Donec feugiat hendrerit ipsum, ac accumsan lorem porta venenatis.
+                        Omppu&Rane on koirantarvike ja -vaatekauppa, jossa tuotteiden laatu ja toiminnallisuus
+                        ovat huippulaatua. Haluamme varmistaa että koirasi pukeutuu hyvin, syö hyvin ja nauttii elämästään.
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -66,10 +64,8 @@ const AboutSivu = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        In sed mi arcu.
-                        Nunc dignissim elit vitae dolor dictum hendrerit.
-                        Aliquam ullamcorper rutrum eleifend. Cras convallis tellus at accumsan mollis.
-                        Nunc purus ligula, euismod sit amet nunc eget, suscipit porta eros.
+                        Meiltä saat kaiken kokoisille koirille takit, hatut, liivit ja muut vaatteet.
+                        Sekä lelut, ruoat että herkut. 
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -80,9 +76,7 @@ const AboutSivu = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Vivamus ut ultricies velit, in auctor orci.
-                        Donec tristique odio in laoreet hendrerit.
-                        Pellentesque eros ligula, vulputate eget dictum quis, tristique in sem. Aliquam a auctor nibh.
+                        Tuotteissamme on 30 päivän vaihto- ja palautusoikeus
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -93,8 +87,7 @@ const AboutSivu = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Sed ac enim quis metus vestibulum iaculis at a mauris.
-                        Suspendisse volutpat, nunc id dictum lacinia, est risus blandit leo, a commodo purus sapien et quam.
+                        Jos olet kiinnostunut hakemaan meille töihin lähetä aivoin hakemus ja CV meille sähköpostitse 
                     </Typography>
                 </AccordionDetails>
             </Accordion>
