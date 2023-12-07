@@ -53,7 +53,11 @@ const AboutSivu = () => {
                 <AccordionDetails sx={accordionDetailsStyles}>
                     <Typography>
                         Omppu&Rane on koirantarvike ja -vaatekauppa, jossa tuotteiden laatu ja toiminnallisuus
-                        ovat huippulaatua. Haluamme varmistaa että koirasi pukeutuu hyvin, syö hyvin ja nauttii elämästään.
+                        ovat huippuluokkaa. Haluamme varmistaa että koirasi pukeutuu hyvin, syö hyvin ja nauttii elämästään.
+
+                        Y-Tunnus: 1234567-8
+                        Perustettu: 04.02.1337
+                        Perustajat: Omppu ja Rane
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -65,7 +69,7 @@ const AboutSivu = () => {
                 <AccordionDetails>
                     <Typography>
                         Meiltä saat kaiken kokoisille koirille takit, hatut, liivit ja muut vaatteet.
-                        Sekä lelut, ruoat että herkut. 
+                        Valikoimastamme löytyvät myös lelut, ruoat ja muut herkut. 
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -76,7 +80,7 @@ const AboutSivu = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Tuotteissamme on 30 päivän vaihto- ja palautusoikeus
+                        Tuotteissamme on 30 päivän vaihto- ja palautusoikeus.
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -87,7 +91,7 @@ const AboutSivu = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
-                        Jos olet kiinnostunut hakemaan meille töihin lähetä aivoin hakemus ja CV meille sähköpostitse 
+                        Jos olet kiinnostunut hakemaan meille töihin lähetä aivoin hakemus ja CV meille sähköpostitse osoitteeseen omppu&rane@kvtkp.com.
                     </Typography>
                 </AccordionDetails>
             </Accordion>
