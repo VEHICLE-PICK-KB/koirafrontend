@@ -3,18 +3,10 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
-import ZUserDialog from "./ZUserDialog";
 
-export default function Rekisterointi({ fetchTuotteet }) {
-  const [kayttajat, setKayttajat] = useState({
-    username: "",
-    passwordHash: "",
-    role: "USER",
-    etunimi: "",
-    sukunimi: "",
-    sahkoposti: "",
-  });
+export default function PoistaKayttaja({ fetchTuotteet }) {
   const [open, setOpen] = useState(false);
+  const [username, setUsername] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,24 +15,14 @@ export default function Rekisterointi({ fetchTuotteet }) {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleChange = (e) => {
-    setKayttajat({ ...kayttajat, [e.target.name]: e.target.value });
+    setUsername(e.target.value);
   };
 
-  const fetchKayttajat = () => {
-    if (kayttajat.username.length < 5 || kayttajat.passwordHash.length < 7) {
-      alert(
-        "Käyttäjätunnuksen on oltava vähintään 5 merkkiä pitkä!          Salasanan on oltava vähintään 7 merkkiä pitkä!"
-      );
-      return;
-    }
-
-    fetch("https://softala.haaga-helia.fi:8075/api/kayttajat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(kayttajat),
+  const fetchDeleteKayttaja = () => {
+    fetch(`https://softala.haaga-helia.fi:8075/api/kayttajat/${username}`, {
+      method: "DELETE",
       credentials: "include",
     })
       .then((response) => {
@@ -50,28 +32,43 @@ export default function Rekisterointi({ fetchTuotteet }) {
         fetchTuotteet();
       })
       .catch((err) => console.error(err));
+
     handleClose();
   };
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button variant="contained" color="success" onClick={handleClickOpen}>
-          Rekisteröidy
+        <Button variant="contained" color="error" onClick={handleClickOpen}>
+          Poista käyttäjä
         </Button>
       </div>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
   <DialogTitle style={{ background: "#4CAF50", color: "white" }}>
-    Uusi asiakas
+    Poista käyttäjä
   </DialogTitle>
   <div style={{ padding: "16px", background: "#f1f1f1" }}>
-    <ZUserDialog kayttajat={kayttajat} handleChange={handleChange} />
+    <label style={{ display: "block", marginBottom: "8px", color: "#333" }}>
+      Käyttäjänimi:
+    </label>
+    <input
+      type="text"
+      value={username}
+      onChange={handleChange}
+      style={{
+        width: "100%",
+        padding: "8px",
+        borderRadius: "4px",
+        border: "1px solid #ccc",
+      }}
+    />
   </div>
   <DialogActions style={{ background: "#f1f1f1" }}>
     <Button onClick={handleClose} style={{ color: "#333" }}>
       Peruuta
     </Button>
-    <Button onClick={fetchKayttajat} style={{ color: "#fff", background: "#2196F3" }}>
-      Luo asiakas
+    <Button onClick={fetchDeleteKayttaja} style={{ color: "#fff", background: "#4CAF50" }}>
+      Poista käyttäjä
     </Button>
   </DialogActions>
 </Dialog>

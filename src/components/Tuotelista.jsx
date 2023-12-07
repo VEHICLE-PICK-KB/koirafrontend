@@ -5,6 +5,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import { AgGridReact } from "ag-grid-react";
 import { useEffect, useRef, useState } from "react";
 import Rekisterointi from "./Rekisterointi";
+import PoistaKayttaja from "./PoistaKayttaja";
 import "./Tuotelista.css";
 
 const Tuotelista = () => {
@@ -108,6 +109,8 @@ const Tuotelista = () => {
           Tuotteet
         </Typography>
         <Rekisterointi fetchTuotteet={fetchTuotteet} />
+        <PoistaKayttaja fetchTuotteet={fetchTuotteet} />
+        
         <AgGridReact
           rowData={tuotteet}
           columnDefs={columnDefs}
